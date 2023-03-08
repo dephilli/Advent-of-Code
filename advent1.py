@@ -83,3 +83,35 @@ elfs["start"]=np.where(elfs.start>0,elfs.start+1,0)
 indexer=elfs[["start","end"]]
 
 #indexer=dict(indexer)
+
+
+#%%
+for index, row in indexer.iterrows():
+    print(row['start'],row['end'])
+
+#%%
+
+
+#%%
+caltotals=[]
+
+for index, row in indexer.iterrows():
+    caltotals.append(caloric_total(row['start'],row['end']))
+    
+
+#%%
+caltotals.sort()
+
+caltotals.reverse()
+
+top_three=0
+sum(caltotals[0:3])
+
+#%%
+t=0
+x=open("input.txt", "r").read().split("\n")
+
+for i in x:
+    t=max(t,sum([int(r) for r in i.splitlines()]))
+
+print(t)
